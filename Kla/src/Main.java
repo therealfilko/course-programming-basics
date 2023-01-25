@@ -1,17 +1,25 @@
 public class Main {
     public static void main(String[] args) {
-        Girokonto hanskonto;
-        Girokonto ottokonto;
-        hanskonto = new Girokonto("Hans");
-        ottokonto = new Girokonto("Otto");
-        double hansStand;
+        Girokonto hansKonto;
+        Girokonto ottosKonto;
+
+        hansKonto = new Girokonto();
+        ottosKonto = new Girokonto();
+
+        String hansStand;
+        hansKonto.setInhaber("Hans");
+        hansStand = hansKonto.getStandFormatiert();
         long hansNr;
-        hansStand = hansKonto.getKontostand();
         hansNr = hansKonto.getKontonummer();
 
-        System.out.println("Hans hat im Moment " + hansStand
-                + " EUR auf dem Konto mit der Nummer " + hansNr);
+        String ottoStand;
+        ottosKonto.setInhaber("Otto");
+        ottoStand = ottosKonto.getStandFormatiert();
+        long ottoNr;
+        ottoNr = ottosKonto.getKontonummer();
+
         boolean hatGeklappt;
+        ottosKonto.einzahlen(400);
         hatGeklappt = ottosKonto.abheben(200);
         if (hatGeklappt == true) {
             System.out.println("Die Abhebung war erfolgreich!");
@@ -20,6 +28,9 @@ public class Main {
             System.out.println("Neuer Kontostand bei Otto: " + ottosStand);
             hansKonto.einzahlen(200);
         }
-        System.out.println("Alle Daten von Hans: " + hansKonto);
+
+        System.out.println(hansKonto.getInhaber() + " hat im moment " + hansStand + " eur auf dem konto mit der nummer " + hansNr);
+        System.out.println(ottosKonto.getInhaber() + " hat im moment " + ottoStand + " eur auf dem konto mit der nummer " + ottoNr);
+
     }
 }
